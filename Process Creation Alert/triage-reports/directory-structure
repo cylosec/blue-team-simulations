@@ -1,0 +1,25 @@
+📂 Wazuh Triage Project Structure
+
+This directory structure supports manual and automated triage of Wazuh alerts using JSON parsing with Python.
+
+Directory Layout
+
+wazuh-triage/
+├── alerts/
+│   ├── alert1.json
+│   ├── alert2.json
+│   └── ...
+├── triage-reports/
+│   ├── triage_WIN-1T5RE39Q2K5_eid1.txt
+│   └── ...
+├── batch_process_alerts.py
+└── process_alert.py
+
+
+  
+How to Use
+
+1. Place one or more `.json` alert files into the `alerts/` folder.
+2. Run the batch processor:
+   ```bash
+   python3 batch_process_alerts.py

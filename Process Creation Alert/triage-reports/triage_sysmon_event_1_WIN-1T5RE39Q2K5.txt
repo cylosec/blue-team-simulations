@@ -1,0 +1,30 @@
+SOC 1 Triage Summary - Sysmon Event ID 1
+
+[Agent Information]
+Hostname     : WIN-1T5RE39Q2K5
+IP Address   : 10.0.0.9
+Agent ID     : 005
+
+[Process Information]
+Executable   : C:\\Windows\\System32\\cscript.exe
+Command Line : cscript  //nologo \"C:\\Windows\\System32\\winrm.vbs\" set winrm/config/client/auth System.Collections.Hashtable
+User         : CYLOSEC\\Administrator
+Parent       : C:\\Windows\\System32\\cmd.exe
+Integrity    : High
+
+[Detection Rule]
+Rule ID      : 92032
+Description  : Suspicious Windows cmd shell execution
+Severity     : 3
+MITRE TTPs   : T1087, T1059.003 (Account Discovery, Windows Command Shell)
+
+[Sysmon Metadata]
+Channel      : Microsoft-Windows-Sysmon/Operational
+Computer     : WIN-1T5RE39Q2K5.cylosec.local
+Provider     : Microsoft-Windows-Sysmon
+Timestamp    : 2025-07-10T03:31:55.385+0000
+
+[Analyst Notes]
+- Check if this command was executed as part of a routine task.
+- Review user session history and admin group membership.
+- Escalate to Tier 2 if unauthorized or linked to lateral movement.

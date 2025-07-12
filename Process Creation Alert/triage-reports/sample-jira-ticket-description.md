@@ -1,4 +1,4 @@
-Sample JIRA Ticket Description: Alert Triage
+# Sample JIRA Ticket Description: Alert Triage
 Use this when creating or documenting a new alert in Jira.
 
 **Alert Summary**  
@@ -15,10 +15,6 @@ Suspicious process creation detected via Sysmon Event ID 1.
 - Parent Process: cmd.exe
 - Command Line:
 cscript //nologo "C:\Windows\System32\winrm.vbs" set winrm/config/client/auth System.Collections.Hashtable
-
-markdown
-Copy
-Edit
 - Hash (SHA256): D84F0894D9E651E1C1485BE00A12C6EF0513FF3CCBB68BA0008CC8BEECB78849
 
 **MITRE ATT&CK Mapping**
@@ -52,7 +48,8 @@ Initial analysis indicates `cscript.exe` was executed with high integrity from `
 Pending:
 - Review of scheduled tasks
 - Cross-reference with system baseline
-✅ Sample JIRA Comment: False Positive Closure
+
+Sample JIRA Comment: False Positive Closure
 Use this when closing a ticket as a false positive.
 
 **Final Verdict – False Positive**

@@ -61,3 +61,47 @@ If determined to be a false positive:
 - [ ] Create hash or path suppression rule in Wazuh (with justification)
 - [ ] Comment on JIRA ticket with reason and supporting evidence
 
+## Use Case
+
+Detect execution of cscript.exe running winrm.vbs to configure WinRM — often used legitimately in system setup or remotely abused for lateral movement.
+
+## Custom Wazuh Rule (XML)
+Place this inside your rules_local.xml (usually in /var/ossec/etc/rules/):
+
+```xml
+<group name="winrm_script_exec,sysmon,windows,process_creation">
+  <rule id="100120" level="6">
+    <if_sid>92032</if_sid> <!-- Base rule: Suspicious Windows cmd shell execution -->
+    <field name="win.system.eventID">1</field>
+    <field name="win.eventdata.Image">C:\\Windows\\System32\\cscript.exe</field>
+    <field name="win.eventdata.CommandLine">.*winrm\.vbs.*</field>
+    <description>Execution of WinRM configuration script via cscript.exe (potential lateral movement prep)</description>
+    <mitre>
+      <id>T1059.003</id> <!-- Command and Scripting Interpreter: Windows Command Shell -->
+      <id>T1021.006</id> <!-- Remote Services: Windows Remote Management -->
+    </mitre>
+    <group>remote_exec,scripting,winrm_monitoring</group>
+  </rule>
+</group>
+```
+
+## Optional: Add Lab Whitelist Rule (Lower Priority)
+If this behavior is recurring in your lab, add a second rule to downgrade severity when executed by CYLOSEC\Administrator:
+
+```xml
+<rule id="100121" level="2" overwrite="true">
+  <if_sid>100120</if_sid>
+  <field name="win.eventdata.User">CYLOSEC\\Administrator</field>
+  <description>Known lab-based execution of winrm.vbs via cscript.exe (CYLOSEC\\Administrator)</description>
+  <group>lab_noise,false_positives</group>
+</rule>
+```
+
+---
+
+## Reload Wazuh Rules
+After saving changes, restart the Wazuh manager to apply:
+
+```bash
+sudo systemctl restart wazuh-manager
+```

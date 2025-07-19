@@ -78,6 +78,3 @@ Policy References:
 
 ---
 
-## Use Case
-
-Add this document to your GitHub `SOC1/Compliance/` folder as a reference for blue team triage and audit preparation.

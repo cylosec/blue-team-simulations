@@ -1,0 +1,15 @@
+Summary: [SOC2 Escalation] PowerShell Execution Detected on WIN-1T5RE39Q2K5
+Host: WIN-1T5RE39Q2K5
+IP Address: 10.0.0.9
+User: NT AUTHORITY\\SYSTEM
+Process: C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\mscorsvw.exe
+Module Loaded: C:\\Windows\\assembly\\NativeImages_v4.0.30319_32\\System.Manaa57fc8cc#\\83cc3dfb3cd3db21e13c136d1b1f6b96\\System.Management.Automation.ni.dll
+Signed: false
+MITRE ID: T1059.001
+Rule: Binary loaded PowerShell automation library - Possible unmanaged Powershell execution by suspicious process
+Event ID: 7
+Severity: 12
+Fired Times: 466
+Timestamp: 2025-07-20 03:35:52 UTC
+True Positive: No
+Escalation Recommendation: Monitor in Tier 1

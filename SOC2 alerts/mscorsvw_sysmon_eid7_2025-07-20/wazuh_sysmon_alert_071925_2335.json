@@ -1,0 +1,99 @@
+{
+  "_index": "wazuh-alerts-4.x-2025.07.20",
+  "_id": "aqvnJZgBfkycKcDlHVlK",
+  "_version": 1,
+  "_score": null,
+  "_source": {
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "10.0.0.9",
+      "name": "WIN-1T5RE39Q2K5",
+      "id": "005"
+    },
+    "manager": {
+      "name": "ubuntuwazuh"
+    },
+    "data": {
+      "win": {
+        "eventdata": {
+          "originalFileName": "System.Management.Automation.dll",
+          "image": "C:\\\\Windows\\\\Microsoft.NET\\\\Framework\\\\v4.0.30319\\\\mscorsvw.exe",
+          "product": "Microsoft (R) Windows (R) Operating System",
+          "imageLoaded": "C:\\\\Windows\\\\assembly\\\\NativeImages_v4.0.30319_32\\\\System.Manaa57fc8cc#\\\\83cc3dfb3cd3db21e13c136d1b1f6b96\\\\System.Management.Automation.ni.dll",
+          "description": "System.Management.Automation",
+          "signed": "false",
+          "signatureStatus": "Unavailable",
+          "processGuid": "{9bc59194-63c8-687c-d80a-000000000b00}",
+          "processId": "8496",
+          "utcTime": "2025-07-20 03:34:43.774",
+          "hashes": "SHA256=7DDE4EB995407C1D50F984B393EAEFBBBDDE7D66116335D26075C4E8D5AAEE5D",
+          "company": "Microsoft Corporation",
+          "fileVersion": "10.0.17763.7434",
+          "user": "NT AUTHORITY\\\\SYSTEM"
+        },
+        "system": {
+          "eventID": "7",
+          "keywords": "0x8000000000000000",
+          "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+          "level": "4",
+          "channel": "Microsoft-Windows-Sysmon/Operational",
+          "opcode": "0",
+          "message": "\"Image loaded:\r\nRuleName: -\r\nUtcTime: 2025-07-20 03:34:43.774\r\nProcessGuid: {9bc59194-63c8-687c-d80a-000000000b00}\r\nProcessId: 8496\r\nImage: C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\mscorsvw.exe\r\nImageLoaded: C:\\Windows\\assembly\\NativeImages_v4.0.30319_32\\System.Manaa57fc8cc#\\83cc3dfb3cd3db21e13c136d1b1f6b96\\System.Management.Automation.ni.dll\r\nFileVersion: 10.0.17763.7434\r\nDescription: System.Management.Automation\r\nProduct: Microsoft (R) Windows (R) Operating System\r\nCompany: Microsoft Corporation\r\nOriginalFileName: System.Management.Automation.dll\r\nHashes: SHA256=7DDE4EB995407C1D50F984B393EAEFBBBDDE7D66116335D26075C4E8D5AAEE5D\r\nSigned: false\r\nSignature: -\r\nSignatureStatus: Unavailable\r\nUser: NT AUTHORITY\\SYSTEM\"",
+          "version": "3",
+          "systemTime": "2025-07-20T03:34:44.000927600Z",
+          "eventRecordID": "1494042",
+          "threadID": "5780",
+          "computer": "WIN-1T5RE39Q2K5.cylosec.local",
+          "task": "7",
+          "processID": "5464",
+          "severityValue": "INFORMATION",
+          "providerName": "Microsoft-Windows-Sysmon"
+        }
+      }
+    },
+    "rule": {
+      "firedtimes": 466,
+      "mail": true,
+      "level": 12,
+      "description": "Binary loaded PowerShell automation library - Possible unmanaged Powershell execution by suspicious process",
+      "groups": [
+        "sysmon",
+        "sysmon_eid7_detections",
+        "windows"
+      ],
+      "mitre": {
+        "technique": [
+          "PowerShell"
+        ],
+        "id": [
+          "T1059.001"
+        ],
+        "tactic": [
+          "Execution"
+        ]
+      },
+      "id": "92151"
+    },
+    "location": "EventChannel",
+    "decoder": {
+      "name": "windows_eventchannel"
+    },
+    "id": "1752982552.7675452",
+    "timestamp": "2025-07-20T03:35:52.290+0000"
+  },
+  "fields": {
+    "timestamp": [
+      "2025-07-20T03:35:52.290Z"
+    ]
+  },
+  "highlight": {
+    "manager.name": [
+      "@opensearch-dashboards-highlighted-field@ubuntuwazuh@/opensearch-dashboards-highlighted-field@"
+    ]
+  },
+  "sort": [
+    1752982552290
+  ]
+}

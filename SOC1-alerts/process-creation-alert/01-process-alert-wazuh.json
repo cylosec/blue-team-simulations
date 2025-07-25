@@ -1,0 +1,113 @@
+{
+  "_index": "wazuh-alerts-4.x-2025.07.10",
+  "_id": "pBZj8pcBus1XoRMn0c4u",
+  "_version": 1,
+  "_score": null,
+  "_source": {
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "10.0.0.9",
+      "name": "WIN-1T5RE39Q2K5",
+      "id": "005"
+    },
+    "manager": {
+      "name": "ubuntuwazuh"
+    },
+    "data": {
+      "win": {
+        "eventdata": {
+          "originalFileName": "cscript.exe",
+          "image": "C:\\\\Windows\\\\System32\\\\cscript.exe",
+          "product": "Microsoft ® Windows Script Host",
+          "parentProcessGuid": "{9bc59194-33ef-686f-0609-000000000a00}",
+          "description": "Microsoft ® Console Based Script Host",
+          "logonGuid": "{9bc59194-e9af-686e-018d-4a0200000000}",
+          "parentCommandLine": "C:\\\\Windows\\\\system32\\\\cmd.exe /c \\\"\\\"C:\\\\Windows\\\\system32\\\\winrm.cmd\\\" set winrm/config/client/auth System.Collections.Hashtable\\\"",
+          "processGuid": "{9bc59194-33ef-686f-0709-000000000a00}",
+          "logonId": "0x24a8d01",
+          "parentProcessId": "7892",
+          "processId": "6472",
+          "currentDirectory": "C:\\\\Users\\\\Administrator\\\\",
+          "utcTime": "2025-07-10 03:30:55.114",
+          "hashes": "MD5=590AF992C43F557F79EE84CD2D595F39,SHA256=D84F0894D9E651E1C1485BE00A12C6EF0513FF3CCBB68BA0008CC8BEECB78849,IMPHASH=6E3ED5FF8046087CB49CB98F1E154288",
+          "parentImage": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+          "company": "Microsoft Corporation",
+          "commandLine": "cscript  //nologo \\\"C:\\\\Windows\\\\System32\\\\winrm.vbs\\\" set winrm/config/client/auth System.Collections.Hashtable",
+          "integrityLevel": "High",
+          "fileVersion": "5.812.10240.16384",
+          "user": "CYLOSEC\\\\Administrator",
+          "terminalSessionId": "2",
+          "parentUser": "CYLOSEC\\\\Administrator"
+        },
+        "system": {
+          "eventID": "1",
+          "keywords": "0x8000000000000000",
+          "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+          "level": "4",
+          "channel": "Microsoft-Windows-Sysmon/Operational",
+          "opcode": "0",
+          "message": "\"Process Create:\r\nRuleName: -\r\nUtcTime: 2025-07-10 03:30:55.114\r\nProcessGuid: {9bc59194-33ef-686f-0709-000000000a00}\r\nProcessId: 6472\r\nImage: C:\\Windows\\System32\\cscript.exe\r\nFileVersion: 5.812.10240.16384\r\nDescription: Microsoft ® Console Based Script Host\r\nProduct: Microsoft ® Windows Script Host\r\nCompany: Microsoft Corporation\r\nOriginalFileName: cscript.exe\r\nCommandLine: cscript  //nologo \"C:\\Windows\\System32\\winrm.vbs\" set winrm/config/client/auth System.Collections.Hashtable\r\nCurrentDirectory: C:\\Users\\Administrator\\\r\nUser: CYLOSEC\\Administrator\r\nLogonGuid: {9bc59194-e9af-686e-018d-4a0200000000}\r\nLogonId: 0x24A8D01\r\nTerminalSessionId: 2\r\nIntegrityLevel: High\r\nHashes: MD5=590AF992C43F557F79EE84CD2D595F39,SHA256=D84F0894D9E651E1C1485BE00A12C6EF0513FF3CCBB68BA0008CC8BEECB78849,IMPHASH=6E3ED5FF8046087CB49CB98F1E154288\r\nParentProcessGuid: {9bc59194-33ef-686f-0609-000000000a00}\r\nParentProcessId: 7892\r\nParentImage: C:\\Windows\\System32\\cmd.exe\r\nParentCommandLine: C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Windows\\system32\\winrm.cmd\" set winrm/config/client/auth System.Collections.Hashtable\"\r\nParentUser: CYLOSEC\\Administrator\"",
+          "version": "5",
+          "systemTime": "2025-07-10T03:30:55.120110600Z",
+          "eventRecordID": "4876",
+          "threadID": "5320",
+          "computer": "WIN-1T5RE39Q2K5.cylosec.local",
+          "task": "1",
+          "processID": "4668",
+          "severityValue": "INFORMATION",
+          "providerName": "Microsoft-Windows-Sysmon"
+        }
+      }
+    },
+    "rule": {
+      "firedtimes": 8,
+      "mail": false,
+      "level": 3,
+      "description": "Suspicious Windows cmd shell execution",
+      "groups": [
+        "sysmon",
+        "sysmon_eid1_detections",
+        "windows"
+      ],
+      "mitre": {
+        "technique": [
+          "Account Discovery",
+          "Windows Command Shell"
+        ],
+        "id": [
+          "T1087",
+          "T1059.003"
+        ],
+        "tactic": [
+          "Discovery",
+          "Execution"
+        ]
+      },
+      "id": "92032"
+    },
+    "location": "EventChannel",
+    "decoder": {
+      "name": "windows_eventchannel"
+    },
+    "id": "1752118315.6279996",
+    "timestamp": "2025-07-10T03:31:55.385+0000"
+  },
+  "fields": {
+    "timestamp": [
+      "2025-07-10T03:31:55.385Z"
+    ]
+  },
+  "highlight": {
+    "agent.name": [
+      "@opensearch-dashboards-highlighted-field@WIN-1T5RE39Q2K5@/opensearch-dashboards-highlighted-field@"
+    ],
+    "data.win.system.eventID": [
+      "@opensearch-dashboards-highlighted-field@1@/opensearch-dashboards-highlighted-field@"
+    ]
+  },
+  "sort": [
+    1752118315385
+  ]
+}

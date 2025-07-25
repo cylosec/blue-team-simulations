@@ -1,0 +1,66 @@
+{
+    "alert_id": "ALERT-2025-07-25-002",
+    "timestamp": "2025-07-25T14:32:11Z",
+    "source": "Wazuh-SIEM",
+    "rule": {
+        "level": 12,
+        "description": "Possible Lateral Movement and C2 Activity Detected",
+        "id": "92014",
+        "groups": [
+            "windows",
+            "lateral_movement",
+            "c2_traffic",
+            "high"
+        ],
+        "mitre": {
+            "tactics": [
+                "Lateral Movement",
+                "Command and Control"
+            ],
+            "techniques": [
+                "T1021.001",
+                "T1059.001",
+                "T1071.001"
+            ]
+        }
+    },
+    "agent": {
+        "id": "001",
+        "name": "WIN-DC01.cylosec.local",
+        "ip": "192.168.1.10"
+    },
+    "related_events": [
+        {
+            "event_type": "sysmon_process_create",
+            "event_id": "1",
+            "parent_process": "powershell.exe",
+            "process": "wmic.exe /node:192.168.1.12 process call create \"powershell.exe -EncodedCommand ...\"",
+            "user": "cylosec\\attacker",
+            "timestamp": "2025-07-25T14:28:05Z"
+        },
+        {
+            "event_type": "network_connection",
+            "source_ip": "192.168.1.12",
+            "destination_ip": "185.199.111.29",
+            "destination_port": 8081,
+            "protocol": "TCP",
+            "bytes_sent": 10485,
+            "timestamp": "2025-07-25T14:29:00Z"
+        }
+    ],
+    "indicators": [
+        {
+            "type": "domain",
+            "value": "c2-stage.cylosec-breach[.]com",
+            "threat_level": "high"
+        },
+        {
+            "type": "ip",
+            "value": "185.199.111.29",
+            "threat_level": "high"
+        }
+    ],
+    "status": "escalated",
+    "ticket_id": "SOC2-IR-2025-74",
+    "notes": "Detected lateral movement from WIN-DC01 to WIN-SQL01 using WMI, followed by suspicious outbound C2 traffic. Requires packet capture review for exfiltration attempt."
+}

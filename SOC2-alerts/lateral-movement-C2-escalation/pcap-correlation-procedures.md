@@ -33,6 +33,11 @@ dns
 
 - DNS response contains IP 185.199.111.29
 
+
+Wireshark Screenshot:
+
+![DNS query](images/dns-query.png)
+
 ---
 
 ## Step 3: Analyze TCP Connections and HTTP Beacons
@@ -49,6 +54,10 @@ ip.addr == 185.199.111.29 && tcp.port == 8081
 - Static or repetitive payload sizes (~10KB)
 
 - No browser user-agent (indicates non-interactive/scripted communication)
+
+Wireshark screenshot:
+
+![TCP query](images/tcp-query.png)
 
 ## Step 4: Reconstruct TCP Stream
 - Right-click a POST packet
@@ -91,9 +100,6 @@ Use timestamps from Wazuh alerts and host telemetry to match:
 - Purpose: Resolves human-readable domain names (e.g., c2-stage.cylosec-breach.com) into IP addresses.
 
 - Relevance: Attackers often use custom or fast-flux domains for C2. DNS logs or PCAPs can reveal initial resolution attempts before a connection is made.
-
-![DNS query](images/dns-resolution.png)
-
 
 ### Outcome of Analysis
 - The PCAP confirms resolution of a known malicious domain to an external C2 IP.

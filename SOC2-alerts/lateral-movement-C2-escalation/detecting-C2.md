@@ -2,7 +2,7 @@
 
 ## Objective
 
-To identify signs of active or attempted C2 communication between a compromised internal host and an external server by analyzing full packet capture (PCAP) data.
+To identify signs of active or attempted C2 communication between a compromised internal host and an external server by analyzing full packet capture (PCAP) data. This may be used as a training guide for SOC1 analysts transitioning to SOC2 roles.
 
 ---
 

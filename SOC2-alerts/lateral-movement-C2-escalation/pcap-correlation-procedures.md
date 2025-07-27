@@ -77,6 +77,11 @@ Use timestamps from Wazuh alerts and host telemetry to match:
 | DNS resolution to C2 domain  | Wireshark / PCAP      | 14:29:30            |
 | Beaconing to TCP 8081        | Wireshark / PCAP      | 14:30:15 and onward |
 
+
+Wireshark Screenshot:
+
+![TCP stream](images/follow-stream.png)
+
 ---
 
 ## Protocol Explanations

@@ -115,6 +115,26 @@ Wireshark Screenshot:
 
 - This traffic matches the pattern of encoded or scripted callback sessions.
 
+## Conclusion
+
+The PCAP analysis confirms that lateral movement and command-and-control (C2) activity occurred during the observed window.
+
+Key indicators identified through Wireshark include:
+
+- A DNS resolution request to the domain `c2-stage.cylosec-breach.com`, initiated by internal host `192.168.1.12`, indicating an attempt to contact an external infrastructure component.
+- TCP connections to the resolved IP address `185.199.111.29` over non-standard port `8081`, which is not commonly used for legitimate web traffic.
+- Multiple HTTP POST requests from the internal host to the C2 server exhibiting beaconing behavior — short, repetitive payloads at regular intervals — consistent with staged communication used in malware or remote access tools.
+- The timing and source of the packets correlate precisely with process creation events captured via Sysmon, specifically the use of `wmic.exe` to spawn `powershell.exe` remotely, consistent with known WMI-based lateral movement techniques.
+
+These network indicators, when combined with endpoint telemetry, provide high-confidence evidence that:
+
+1. An attacker leveraged Windows Management Instrumentation (WMI) to remotely execute commands from `WIN-DC01` to `WIN-SQL01`.
+2. `WIN-SQL01` subsequently initiated outbound communications with an external IP associated with C2 activity.
+3. This communication was structured in a way that aligns with typical command-and-control protocols used in post-exploitation frameworks.
+
+This confirms that the initial alert (SIM-002) was valid and warrants full incident response measures under SOC2 protocols, including isolation of the affected endpoint, IOC sweep, and forensic acquisition.
+
+
 ## Actionable Recommendations
 - Block domain c2-stage.cylosec-breach.com and IP 185.199.111.29 at DNS and firewall layers.
 
